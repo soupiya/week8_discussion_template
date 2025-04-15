@@ -2,8 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:week8datapersistence/firebase_options.dart';
-import 'providers/todo_provider.dart';
-import 'screens/todo_page.dart';
+import 'providers/expense_provider.dart';
+import 'screens/expense_page.dart';
+import 'screens/add_expense.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +12,7 @@ Future<void> main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: ((context) => TodoListProvider())),
+        ChangeNotifierProvider(create: ((context) => ExpenseListProvider())),
       ],
       child: const MyApp(),
     ),
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
       title: 'SimpleTodo',
       initialRoute: '/',
       routes: {
-        '/': (context) => const TodoPage(),
+        '/': (context) => const ExpensePage(),
+        '/add-expense': (context) => const AddExpense(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
